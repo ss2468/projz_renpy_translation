@@ -68,3 +68,15 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# 文件夹
+/.idea/
+
+# 项目
+/demo/
+/projz/
+
+# 文件
+*.pyc
+*.whl
+*.rar
