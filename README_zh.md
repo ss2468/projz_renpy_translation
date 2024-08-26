@@ -83,7 +83,7 @@
 9. [0.4.3] 现在你可以保存RealTime Translator的翻译为TranslationIndex，这意味着你可以用我们翻译工具来处理这些翻译。
 10. [0.4.4] 现在，您可以使用OpenAI端点进行翻译。见[使用OpenAI Endpoint翻译](#使用openai-endpoint翻译)。
 11. [0.4.5] 新命令`llm_translate`，使用OpenAI Endpoint翻译来提高翻译质量，并减少翻译错误。用法:`llm_translate {index_or_name} -l {lang} -m qwen:4b -t Chinese`，或者使用默认配置：`llm_translate {index or name} -l {lang} -a`
-
+12. [0.4.5-fix] 1. 一些问题修复。 2. 你可以在实时翻译器中过滤不想要翻译的文本。
 </details>
 
 # ✨实时翻译功能支持(免费+开源)
@@ -482,7 +482,7 @@ Note that: Translation Stats list translated/untranslated lines of dialogue and 
 
 由于我们只是将原始文本发送给翻译器，因此翻译结果可能包含一些错误翻译内容，这些内容在运行游戏产生运行时错误。例如，以下原始文本：
 ```text
-Today are [day].
+Today is [day].
 ```
 翻译为（中文）后为：
 ```text
@@ -511,7 +511,7 @@ inspect 1 -l schinese
 `message`列显示与`raw_text`相比，`new_text`中缺少的标签\变量\转义字符。
 修复后，使用`updateexcel`命令更新翻译：
 ```bash
-up 1 -l schinese
+ue 1 -l schinese
 ```
 
 ## 4.生成翻译rpy
@@ -572,6 +572,10 @@ Note that: Translation Stats list translated/untranslated lines of dialogue and 
 ![i18n_button.png](imgs/i18n_button.png)
 ![i18n.png](imgs/i18n.png)
 ![i18n.png](imgs/i18n_1.png)
+
+> [!NOTE]  
+> 如果您在启动游戏或者显示I18n插件遇到问题, 你可以使用`ij 1 -t I18n -u`来取消注入。 
+> 或者你可以使用一个兼容版本的I18n插件，通过把[resources/codes/projz_i18n_inject_4oldversion.rpy](resources/codes/projz_i18n_inject_4oldversion.rpy)的内容覆盖原始的[resources/codes/projz_i18n_inject.rpy](resources/codes/projz_i18n_inject.rpy)文件内容，然后重新注入I18n插件：`ij 1 -t I18n`。
 
 > [!TIP]
 > 您可以在[config.yaml](config.yaml)文件配置生成I18N插件语言设置和字体内容，`inject`命令
